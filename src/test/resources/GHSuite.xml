@@ -1,0 +1,50 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="GitHubTestingSuite" verbose="1" parallel="methods" thread-count="4">
+
+    <listeners>
+        <listener class-name="testng.listeners.Listener"/>
+        <listener class-name="testng.listeners.DListener"/>
+    </listeners>
+
+    <test name="Sum test">
+        <groups>
+            <define name="all">
+                <include name="long"/>
+                <include name="double"/>
+            </define>
+
+            <run>
+                <include name="all"/>
+            </run>
+        </groups>
+        <classes>
+            <class name = "testng.sum.SumLongTest"/>
+            <class name = "testng.sum.SumDoubleTest"/>
+        </classes>
+    </test>
+
+
+    <test name="Sub test #3">
+        <parameter name="var1" value="3.55"/>
+        <parameter name="var2" value="7.5"/>
+        <parameter name="expected" value="-3.95"/>
+        <classes>
+            <class name = "testng.sub.SubTest">
+                <methods>
+                    <include name="dSub.*"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Div Double Test" >
+        <classes>
+            <class name = "testng.div.DivDoubleTest">
+            </class>
+        </classes>
+    </test>
+
+
+
+</suite>

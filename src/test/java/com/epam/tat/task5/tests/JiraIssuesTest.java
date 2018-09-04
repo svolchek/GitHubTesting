@@ -8,7 +8,7 @@ import org.testng.annotations.*;
 
 import static  org.testng.Assert.*;
 
-public class BaseTest {
+public class JiraIssuesTest {
     @BeforeTest
     public void init() {
         WebDriver driver = ChromeDriver.getDriver();

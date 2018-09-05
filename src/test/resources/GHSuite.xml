@@ -8,9 +8,9 @@
 
     <test name="GitHub test">
 
-        <parameter name="gitHubURL" value="http://github.com"/>
+<!--        <parameter name="gitHubURL" value="http://github.com"/>
         <parameter name="userLogin" value="svolchek"/>
-        <parameter name="userPassword" value="swiss30Made"/>
+        <parameter name="userPassword" value="swiss30Made"/>-->
         <classes>
             <class name = "com.epam.tat.task5.tests.GitHubTest">
                 <methods>

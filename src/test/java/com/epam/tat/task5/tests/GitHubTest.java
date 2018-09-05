@@ -5,23 +5,23 @@ import com.epam.tat.task5.drivers.ChromeDriver;
 import com.epam.tat.task5.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+import util.ConfigProperties;
 
 import static  org.testng.Assert.*;
 
 public class GitHubTest {
     @BeforeTest
-    @Parameters({"gitHubURL","userLogin","userPassword"})
-    public void init(String gitHubURL, String userLogin, String userPassword) {
+    public void init() {
         WebDriver driver = ChromeDriver.getDriver();
         driver.manage().window().maximize();
-        driver.navigate().to(gitHubURL);
+        driver.navigate().to(ConfigProperties.getTestProperty("url"));
         HomePage homePage = new HomePage(driver);
         LoginPage loginPage = homePage.signIn();
-        loginPage.loginUser(userLogin,userPassword);
+        loginPage.loginUser(ConfigProperties.getTestProperty("userLogin"),ConfigProperties.getTestProperty("userPassword"));
     }
     @AfterMethod
     public void moveToHomePage(){
-        ChromeDriver.getDriver().navigate().to("http://github.com");
+        ChromeDriver.getDriver().navigate().to(ConfigProperties.getTestProperty("url"));
     }
     @AfterTest
     public void closeResources(){

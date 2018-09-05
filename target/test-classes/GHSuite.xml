@@ -3,48 +3,38 @@
 <suite name="GitHubTestingSuite" verbose="1" parallel="methods" thread-count="4">
 
     <listeners>
-        <listener class-name="testng.listeners.Listener"/>
-        <listener class-name="testng.listeners.DListener"/>
+
     </listeners>
 
-    <test name="Sum test">
-        <groups>
-            <define name="all">
-                <include name="long"/>
-                <include name="double"/>
-            </define>
+    <test name="GitHub test">
 
-            <run>
-                <include name="all"/>
-            </run>
-        </groups>
+        <parameter name="gitHubURL" value="http://github.com"/>
+        <parameter name="userLogin" value="svolchek"/>
+        <parameter name="userPassword" value="swiss30Made"/>
         <classes>
-            <class name = "testng.sum.SumLongTest"/>
-            <class name = "testng.sum.SumDoubleTest"/>
-        </classes>
-    </test>
-
-
-    <test name="Sub test #3">
-        <parameter name="var1" value="3.55"/>
-        <parameter name="var2" value="7.5"/>
-        <parameter name="expected" value="-3.95"/>
-        <classes>
-            <class name = "testng.sub.SubTest">
+            <class name = "com.epam.tat.task5.tests.GitHubTest">
                 <methods>
-                    <include name="dSub.*"/>
+
+                    <parameter name="filePath" value="Gist.java"/>
+                    <parameter name="gistDescription" value="Pretty gist"/>
+                    <include name="addGist" description="Add new gist"/>
+
+                    <parameter name="repositoryURL" value="https://github.com/vitalliuss/helloci.git"/>
+                    <parameter name="importRepositoryName" value="helloCI1410"/>
+                    <include name="importRepository" description="Import repository from the specified URL"/>
+
+                    <parameter name="newBiography" value="Hello. My name is Sergei"/>
+                    <include name="editBio" description="Edit biography text in profile "/>
+
+                    <parameter name="repositoryName" value="nRepository"/>
+                    <parameter name="repositoryDescription" value="One day little red riding hood decided to visit her granny-wolf in the forest"/>
+                    <include name="newRepository" description="Add new repository"/>
+
+                    <include name="deleteRepository" description="Delete specified repository from the repositories list"/>
                 </methods>
             </class>
         </classes>
     </test>
-
-    <test name="Div Double Test" >
-        <classes>
-            <class name = "testng.div.DivDoubleTest">
-            </class>
-        </classes>
-    </test>
-
 
 
 </suite>

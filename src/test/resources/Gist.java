@@ -30,9 +30,6 @@ public class Gist {
     @FindBy(name = "gist[public]")
     WebElement addButton;
 
-
-
-
     public void enterDescription(String description){
         descriptionField.click();
         descriptionField.sendKeys(description);
@@ -44,21 +41,3 @@ public class Gist {
         gistFileField.sendKeys(Keys.TAB);
 
     }
-    public void addGistText(){
-
-    }
-
-
-
-    public void addGist(){
-        addButton.click();
-    }
-
-    public void createGist(String description, String fileName){
-        enterDescription(description);
-        enterFileName(fileName);
-        addGistText();
-        addGist();
-    }
-
-}

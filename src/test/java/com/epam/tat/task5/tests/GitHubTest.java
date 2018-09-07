@@ -41,42 +41,50 @@ public class GitHubTest {
     @Test (description = "Import new repository", priority = 2)
     @Parameters({"repositoryURL","importRepositoryName"})
     public void importRepository(String repositoryURL, String importRepositoryName){
-        HomePage homePage = new HomePage(Driver.getDriver());
-        ImportPage importPage = homePage.importRepository();
-        homePage= importPage.addRepository(repositoryURL,importRepositoryName);
-        RepositoriesPage repositoriesPage = homePage.checkRepository();
+//        HomePage homePage = new HomePage(Driver.getDriver());
+//        ImportPage importPage = homePage.importRepository();
+//        homePage= importPage.addRepository(repositoryURL,importRepositoryName);
+        RepositoriesPage repositoriesPage =
+                new HomePage(Driver.getDriver())
+                        .importRepository()
+                        .addRepository(repositoryURL,importRepositoryName)
+                        .checkRepository();
         assertTrue(repositoriesPage.findRepo(importRepositoryName));
     }
 
     @Test (description = "Add new biography to the profile", priority = 3)
     @Parameters({"newBiography"})
     public void editBio(String newBiography){
-        HomePage homePage=new HomePage(Driver.getDriver());
-        ProfilePage profilePage = homePage.editProfile();
-        homePage=profilePage.addBio(newBiography);
-        profilePage = homePage.editProfile();
-        boolean isBiographyCorrect =profilePage.chekBio(newBiography);
-        profilePage.returnToHomePage();
+
+        boolean isBiographyCorrect =
+                new HomePage(Driver.getDriver())
+                        .editProfile()
+                        .addBio(newBiography)
+                        .editProfile()
+                        .chekBio(newBiography);
+
         assertTrue(isBiographyCorrect);
     }
     @Test (description = "Create new repository", priority = 4)
     @Parameters({"repositoryName", "repositoryDescription"})
     public void newRepository(String repositoryName, String repositoryDescription){
-        HomePage homePage=new HomePage(Driver.getDriver());
-        NewRepositoryPage newRepositoryPage = homePage.createNewRepository();
-        homePage = newRepositoryPage.createRepository(repositoryName,repositoryDescription);
-        RepositoriesPage repositoriesPage =homePage.checkRepository();
+        RepositoriesPage repositoriesPage =
+                new HomePage(Driver.getDriver())
+                        .createNewRepository()
+                        .createRepository(repositoryName,repositoryDescription)
+                        .checkRepository();
         assertTrue(repositoriesPage.findRepo(repositoryName));
     }
 
     @Test(description = "Delete repository", dataProvider = "Repositories to be deleted",priority = 5)
     public void deleteRepository(String repositoryName){
-        HomePage homePage=new HomePage(Driver.getDriver());
-        RepositoriesPage repositoriesPage =homePage.checkRepository();
-        SingleRepositoryPage singleRepositoryPage = repositoriesPage.clickRepositoryLink(repositoryName);
-        RepositorySettingsPage repositorySettingsPage = singleRepositoryPage.moveToSettingMenu();
-        homePage = repositorySettingsPage.deleteRepository(repositoryName);
-        repositoriesPage=homePage.checkRepository();
+        RepositoriesPage repositoriesPage =
+                new HomePage(Driver.getDriver())
+                    .checkRepository()
+                    .clickRepositoryLink(repositoryName)
+                    .moveToSettingMenu()
+                    .deleteRepository(repositoryName)
+                    .checkRepository();
         assertFalse(repositoriesPage.findRepo(repositoryName));
     }
     @DataProvider(name = "Repositories to be deleted")

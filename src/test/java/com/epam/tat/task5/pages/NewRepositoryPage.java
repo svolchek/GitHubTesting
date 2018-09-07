@@ -1,6 +1,6 @@
 package com.epam.tat.task5.pages;
 
-import com.epam.tat.task5.drivers.ChromeDriver;
+import com.epam.tat.task5.drivers.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +31,7 @@ public class NewRepositoryPage {
         description.click();
         description.clear();
         description.sendKeys(repoDescription);
-        ChromeDriver.getWaiter().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-primary first-in-line']")));
+        Driver.getWaiter().until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='btn btn-primary first-in-line']")));
         WebElement createButton = driver.findElement(By.xpath("//button[@class='btn btn-primary first-in-line']"));
         createButton.click();
         WebElement homeLogo = driver.findElement(By.xpath("//a[@class='header-logo-invertocat']"));

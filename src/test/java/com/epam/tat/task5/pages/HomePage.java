@@ -1,19 +1,16 @@
 package com.epam.tat.task5.pages;
 
-import com.epam.tat.task5.drivers.ChromeDriver;
+import com.epam.tat.task5.drivers.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.annotations.Factory;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 public  class HomePage {
 
@@ -51,14 +48,14 @@ public  class HomePage {
     }
 
     public LoginPage signIn(){
-        ChromeDriver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(text(),'Sign in')]")));
+        Driver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[contains(text(),'Sign in')]")));
         signInButton.click();
         return new LoginPage(driver);
     }
 
     public GistPage addNewGist(){
         addIcon.click();
-        ChromeDriver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
+        Driver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
         List<WebElement> addItems = driver.findElements(By.xpath("(//*[@id='user-links']//details-menu)[1]/a"));
         Optional<WebElement> newGistButton = addItems.stream().filter(s -> s.getText().trim().equals("New gist")).reduce((a, b) -> null);
         newGistButton.orElseThrow(NoSuchElementException::new).click();
@@ -66,7 +63,7 @@ public  class HomePage {
     }
     public ImportPage importRepository(){
         addIcon.click();
-        ChromeDriver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
+        Driver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
         List<WebElement> addItems = driver.findElements(By.xpath("(//*[@id='user-links']//details-menu)[1]/a"));
         Optional<WebElement> newGistButton = addItems.stream().filter(s -> s.getText().trim().equals("Import repository")).reduce((a, b) -> null);
         newGistButton.orElseThrow(NoSuchElementException::new).click();
@@ -87,7 +84,7 @@ public  class HomePage {
     }
     public NewRepositoryPage createNewRepository(){
         addIcon.click();
-        ChromeDriver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
+        Driver.getWaiter().until(ExpectedConditions.presenceOfElementLocated(By.xpath("(//*[@id='user-links']//details-menu)[1]")));
         List<WebElement> addItems = driver.findElements(By.xpath("(//*[@id='user-links']//details-menu)[1]/a"));
         Optional<WebElement> newRepoButton = addItems.stream().filter(s -> s.getText().trim().equals("New repository")).reduce((a, b) -> null);
         newRepoButton.orElseThrow(NoSuchElementException::new).click();

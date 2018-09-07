@@ -1,12 +1,13 @@
 package com.epam.tat.task5.pages;
 
-import com.epam.tat.task5.drivers.ChromeDriver;
+import com.epam.tat.task5.drivers.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import util.ConfigProperties;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,7 +31,7 @@ public class ImportPage {
         importURL.click();
         importURL.clear();
         importURL.sendKeys(strURL);
-       ChromeDriver.getWaiter().until(ExpectedConditions.elementToBeClickable(By.xpath("//div/button[@type='submit']")));
+       Driver.getWaiter().until(ExpectedConditions.elementToBeClickable(By.xpath("//div/button[@type='submit']")));
         WebElement beginImport = driver.findElement(By.xpath("//div/button[@type='submit']"));
         beginImport.click();
         try {
@@ -38,8 +39,9 @@ public class ImportPage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        WebElement homeLogo=driver.findElement(By.xpath("//a[@class='header-logo-invertocat']"));
-        homeLogo.click();
+//        WebElement homeLogo=driver.findElement(By.xpath("//a[@class='header-logo-invertocat']"));
+//        homeLogo.click();
+        driver.navigate().to(ConfigProperties.getTestProperty("url"));
         return new HomePage(driver);
     }
 

@@ -10,6 +10,8 @@ public class ConfigProperties {
     protected static FileInputStream fileInputStream;
     protected static Properties PROPERTIES;
 
+
+
     static {
         try {
             fileInputStream = new FileInputStream("src/main/resources/config.properties");

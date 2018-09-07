@@ -1,7 +1,7 @@
 package com.epam.tat.task5.tests;
 
 
-import com.epam.tat.task5.drivers.ChromeDriver;
+import com.epam.tat.task5.drivers.Driver;
 import com.epam.tat.task5.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
@@ -12,7 +12,7 @@ import static  org.testng.Assert.*;
 public class GitHubTest {
     @BeforeTest
     public void init() {
-        WebDriver driver = ChromeDriver.getDriver();
+        WebDriver driver = Driver.getDriver();
         driver.manage().window().maximize();
         driver.navigate().to(ConfigProperties.getTestProperty("url"));
         HomePage homePage = new HomePage(driver);
@@ -21,18 +21,18 @@ public class GitHubTest {
     }
     @AfterMethod
     public void moveToHomePage(){
-        ChromeDriver.getDriver().navigate().to(ConfigProperties.getTestProperty("url"));
+        Driver.getDriver().navigate().to(ConfigProperties.getTestProperty("url"));
     }
     @AfterTest
     public void closeResources(){
-        ChromeDriver.getDriver().quit();
+        Driver.getDriver().quit();
     }
 
     @Test(description = "Add new gist", priority = 1)
     @Parameters({"filePath","gistDescription"})
     public void addGist(String filePath, String gistDescription){
         String fileName = filePath; //choose the file in resources dir
-        HomePage homePage = new HomePage(ChromeDriver.getDriver());
+        HomePage homePage = new HomePage(Driver.getDriver());
         GistPage gistPage = homePage.addNewGist();
         gistPage.createGist(gistDescription, fileName);
         assertEquals(gistPage.gistName(),fileName);
@@ -41,7 +41,7 @@ public class GitHubTest {
     @Test (description = "Import new repository", priority = 2)
     @Parameters({"repositoryURL","importRepositoryName"})
     public void importRepository(String repositoryURL, String importRepositoryName){
-        HomePage homePage = new HomePage(ChromeDriver.getDriver());
+        HomePage homePage = new HomePage(Driver.getDriver());
         ImportPage importPage = homePage.importRepository();
         homePage= importPage.addRepository(repositoryURL,importRepositoryName);
         RepositoriesPage repositoriesPage = homePage.checkRepository();
@@ -51,7 +51,7 @@ public class GitHubTest {
     @Test (description = "Add new biography to the profile", priority = 3)
     @Parameters({"newBiography"})
     public void editBio(String newBiography){
-        HomePage homePage=new HomePage(ChromeDriver.getDriver());
+        HomePage homePage=new HomePage(Driver.getDriver());
         ProfilePage profilePage = homePage.editProfile();
         homePage=profilePage.addBio(newBiography);
         profilePage = homePage.editProfile();
@@ -62,7 +62,7 @@ public class GitHubTest {
     @Test (description = "Create new repository", priority = 4)
     @Parameters({"repositoryName", "repositoryDescription"})
     public void newRepository(String repositoryName, String repositoryDescription){
-        HomePage homePage=new HomePage(ChromeDriver.getDriver());
+        HomePage homePage=new HomePage(Driver.getDriver());
         NewRepositoryPage newRepositoryPage = homePage.createNewRepository();
         homePage = newRepositoryPage.createRepository(repositoryName,repositoryDescription);
         RepositoriesPage repositoriesPage =homePage.checkRepository();
@@ -71,7 +71,7 @@ public class GitHubTest {
 
     @Test(description = "Delete repository", dataProvider = "Repositories to be deleted",priority = 5)
     public void deleteRepository(String repositoryName){
-        HomePage homePage=new HomePage(ChromeDriver.getDriver());
+        HomePage homePage=new HomePage(Driver.getDriver());
         RepositoriesPage repositoriesPage =homePage.checkRepository();
         SingleRepositoryPage singleRepositoryPage = repositoriesPage.clickRepositoryLink(repositoryName);
         RepositorySettingsPage repositorySettingsPage = singleRepositoryPage.moveToSettingMenu();

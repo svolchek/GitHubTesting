@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import util.ConfigProperties;
 
 public class ProfilePage {
     WebDriver driver;
@@ -25,7 +26,8 @@ public class ProfilePage {
         inputField.clear();
         inputField.sendKeys(biography);
         saveButton.click();
-        homeLogo.click();
+        //homeLogo.click();
+        driver.navigate().to(ConfigProperties.getTestProperty("url"));
         return new HomePage(driver);
     }
     public  boolean chekBio(String biography){
@@ -33,7 +35,9 @@ public class ProfilePage {
         return biography.equalsIgnoreCase(bioText.getText().trim());
     }
     public HomePage returnToHomePage(){
-        homeLogo.click();
+        driver.navigate().to(ConfigProperties.getTestProperty("url"));
+
+        //      homeLogo.click();
         return new HomePage(driver);
     }
 

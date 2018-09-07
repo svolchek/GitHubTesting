@@ -21,5 +21,3 @@ p
 @src/test/java/com/epam/tat/task5/pages/SingleRepositoryPage.java,5\5\55c9cc00433aa36b95b642b52aeb3b1b395a1554
 m
 =src/test/java/com/epam/tat/task5/pages/NewRepositoryPage.java,e\9\e9ddd9e7fb40710c33f9584f176abcd973c52b34
-j
-:src/test/java/com/epam/tat/task5/tests/JiraIssuesTest.java,1\6\16e2e6b561877f51a308dc5a496a39bfadbc8ac2

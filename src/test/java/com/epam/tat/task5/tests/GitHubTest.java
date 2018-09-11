@@ -12,7 +12,7 @@ import static  org.testng.Assert.*;
 public class GitHubTest {
     @BeforeTest
     public void init() {
-        WebDriver driver = Driver.getDriver();
+        WebDriver driver = Driver.getRemoteDriver();
         driver.manage().window().maximize();
         driver.navigate().to(ConfigProperties.getTestProperty("url"));
         HomePage homePage = new HomePage(driver);

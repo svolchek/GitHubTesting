@@ -7,8 +7,6 @@ e
 5src/test/java/com/epam/tat/task5/pages/LoginPage.java,f\8\f84e1a5461c4c571822537dfb021ca1d7242bb15
 d
 4src/test/java/com/epam/tat/task5/pages/HomePage.java,e\e\eeb0c2d492cea063906ac8b0a8aee1b63141ca62
-j
-:src/test/java/com/epam/tat/task5/drivers/ChromeDriver.java,5\6\5680d315eea506f1b815d7e284a2faf643b35b61
 d
 4src/test/java/com/epam/tat/task5/pages/GistPage.java,3\0\304d5ec955fd8da017e5a0babb54fcebb62f4979
 g
@@ -21,3 +19,15 @@ p
 @src/test/java/com/epam/tat/task5/pages/SingleRepositoryPage.java,5\5\55c9cc00433aa36b95b642b52aeb3b1b395a1554
 m
 =src/test/java/com/epam/tat/task5/pages/NewRepositoryPage.java,e\9\e9ddd9e7fb40710c33f9584f176abcd973c52b34
+f
+6src/test/java/com/epam/tat/task5/pages/ImportPage.java,b\1\b1dcc304b96e8d5c80849593a042e04d7e879e47
+k
+;src/test/java/com/epam/tat/task5/drivers/DriverFactory.java,c\0\c0c922a151f58d306aebeb8f8fb73c4c89294897
+T
+$src/main/resources/config.properties,f\a\fac4e92d770a0a6287eaad0e53c4efa350987f47
+d
+4src/test/java/com/epam/tat/task5/drivers/Driver.java,6\d\6ddec5cdbba7c1562b47ffd50de036569e72f133
+K
+src/main/java/util/tst.java,4\e\4e2169d5d82cf12a90379bf51687a16e3dfd197f
+f
+6src/test/java/com/epam/tat/task5/tests/GitHubTest.java,1\b\1b15193b251bd17559be867b65368fd0942dc54b

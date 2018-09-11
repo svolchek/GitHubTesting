@@ -1,0 +1,9 @@
+
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(³ğ¸ûÿÿÿÿ8åûÊ Û,
+Dsquid:S1481"&Remove this unused "s" local variable.(İ‡ÙÍ8åûÊ Û,
+[
+squid:S106"9Replace this use of System.out or System.err by a logger.(í±ÉÈûÿÿÿÿ8åûÊ Û,
+Ssquid:S1854"5Remove this useless assignment to local variable "s".(İ‡ÙÍ8åûÊ Û,
+Msquid:S1066"/Merge this if statement with the enclosing one.(ßÓÊÙ8åûÊ Û,
+qsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ì°Ûæûÿÿÿÿ8åûÊ Û,
